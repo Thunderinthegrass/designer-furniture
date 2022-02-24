@@ -1,0 +1,36 @@
+.header{
+  &__inner{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 120px;
+  }
+  &__btn{
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+  }
+}
+.logo{
+  height: 120px;
+  margin-left: auto;
+  margin-right: auto;
+  img{
+    height: 100%;
+  }
+}
+.menu{
+  padding-left: 33px;
+  padding-right: 60px;
+  &__list{
+    display: flex;
+  }
+  &__list-item + .menu__list-item{
+    padding-left: 80px;
+  }
+  &__list-link{
+    font-family: 'Montserrat', sans-serif;
+    color: $title-color;
+  }
+}
