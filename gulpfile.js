@@ -9,6 +9,7 @@ const imagemin      = require('gulp-imagemin');
 const del           = require('del');
 const webp          = require('gulp-webp');
 const webpHtml      = require('gulp-webp-html');
+const webpCss       = require('gulp-webp-css');
 
 function browsersync() {
   browserSync.init({
@@ -39,6 +40,7 @@ function images() {
     ))
     .pipe(dest('dist/img'))
     .pipe(webp())
+    .pipe(dest('app/img'))
     .pipe(dest('dist/img'))
 }
 
@@ -67,6 +69,7 @@ function styles() {
         overrideBrowserslist: ['last 10 version'],
         grid: true
       }))
+      .pipe(webpCss())
       .pipe(dest('app/css'))
       .pipe(browserSync.stream())
 }
@@ -97,6 +100,6 @@ exports.html = html;
 
 
 exports.build = series(cleanDist, html, images, build);
-exports.default = parallel(styles ,scripts ,browsersync, watching);
+exports.default = parallel(images, styles ,scripts ,browsersync, watching);
 
 
